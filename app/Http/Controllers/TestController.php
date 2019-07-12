@@ -48,6 +48,7 @@ class TestController extends Controller
                         return;
                     }
                     unlink($content);
+                    echo $v.'上传成功';
                 }
            }
     }
