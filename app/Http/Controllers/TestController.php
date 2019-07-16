@@ -34,22 +34,27 @@ class TestController extends Controller
             //获取所有的文件
         $path=storage_path('app/public/files');
            $file= scandir($path);
-           foreach ($file as $k=>$v)
-           {
-                if($v=='.'||$v == '..'){
-                    continue;
-                }else{
-                    $content = $path.'/'.$v;
-                    try{
-                        $cc=$ossClient->uploadFile($bucket,'files/'.$v,$content);
-                    } catch(OssException $e) {
-                        printf(__FUNCTION__ . ": FAILED\n");
-                        printf($e->getMessage() . "\n");
-                        return;
-                    }
-                    unlink($content);
-                    echo $v.'上传成功';
-                }
+           if(count($file)<=2){
+               header("refresh:0;url='http://ossl.com/vediolist'");
+           }else{
+               foreach ($file as $k=>$v)
+               {
+                   if($v=='.'||$v == '..'){
+                       continue;
+                   }else{
+                       $content = $path.'/'.$v;
+                       try{
+                           $cc=$ossClient->uploadFile($bucket,'files/'.$v,$content);
+                       } catch(OssException $e) {
+                           printf(__FUNCTION__ . ": FAILED\n");
+                           printf($e->getMessage() . "\n");
+                           return;
+                       }
+                       unlink($content);
+                       echo $v.'上传成功';
+                   }
+               }
+               header("refresh:2;url='http://ossl.com/vediolist'");
            }
     }
 }

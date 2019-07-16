@@ -62,4 +62,5 @@ class VedioController extends AdminController
         $form->file('pash', __('视频上传'))->uniqueName();
         return $form;
     }
+
 }

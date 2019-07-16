@@ -20,3 +20,6 @@ Route::get('/vedio',"TestController@vedio");
 
 //视频展示
 Route::get('/list',"ListController@list");
+
+
+Route::get('/vediolist',"ListController@vediolist");
