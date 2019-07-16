@@ -23,3 +23,7 @@ Route::get('/list',"ListController@list");
 
 
 Route::get('/vediolist',"ListController@vediolist");
+
+Route::post('/autoload/vedio',"OutoloadController@index");
+
+
